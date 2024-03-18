@@ -5,6 +5,7 @@ import Navbar from "./components/navbar";
 import Home from "./pages/home";
 import Favourites from "./pages/favourites";
 import Details from "./pages/details";
+import GlobalState from "./context";
 
 function App() {
   return (
