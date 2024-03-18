@@ -9,8 +9,8 @@ export default function GlobalState({ children }) {
     event.preventDefault()
     try {
       const res = await fetch(
-        "https://forkify-api.herokuapp.com/api/v2/recipes?search=${SearchParam}"
-      );
+        `https://forkify-api.herokuapp.com/api/v2/recipes?search=${searchParam}`
+        );
 
       const data = await res.json();
       console.log(data);
