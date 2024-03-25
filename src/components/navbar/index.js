@@ -8,7 +8,7 @@ export default function Navbar() {
     console.log(searchParam);
   return (
     <nav className="flex justify-between items-ceter py-8 continer mx-auto flex-col lg:flex-row gap-5 lg:gap-0">
-      <h2 className="text-2xl font-semibold">FoodRecipe</h2>
+      <h2 className="text-2xl font-semibold"><strong><i>My</i>FoodApp</strong></h2>
       <form onSubmit={handleSubmit}>
         <input
           type="text"

@@ -18,10 +18,13 @@ export default function Details() {
       );
       const data = await response.json();
 
-      console.log(data);
+      console.log("Recipe Details Data:", data);
+      //console.log(data);
       if (data?.data) {
         setRecipeDetailsData(data?.data);
       }
+      
+      
     }
     getRecipeDetails();
   }, []);
