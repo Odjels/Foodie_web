@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/navbar";
 import Home from "./pages/home";
 import Footer from "./components/footer"
+import Login from "./pages/login";
 import Favourites from "./pages/favourites";
 import Details from "./pages/details";
 import GlobalState from "./context";
@@ -14,7 +15,8 @@ function App() {
       <div className="min-h-screen p-6 bg-white text-gray-600 text-lg">
         <Navbar />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Login />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/favourites" element={<Favourites />} />
           <Route path="/recipe-item/:id" element={<Details />} />
         </Routes>

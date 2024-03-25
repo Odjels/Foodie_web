@@ -25,6 +25,14 @@ export default function Navbar() {
             to={"/"}
             className="text-black hover:text-gray-699 duration-300"
           >
+            Login
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to={"/home"}
+            className="text-black hover:text-gray-699 duration-300"
+          >
             Home
           </NavLink>
         </li>
