@@ -8,6 +8,7 @@ import Login from "./pages/login";
 import Favourites from "./pages/favourites";
 import Details from "./pages/details";
 import GlobalState from "./context";
+import Signup from "./pages/signup";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/signup" element={<Signup />} />
           <Route path="/favourites" element={<Favourites />} />
           <Route path="/recipe-item/:id" element={<Details />} />
         </Routes>
