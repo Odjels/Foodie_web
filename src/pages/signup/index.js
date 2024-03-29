@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -14,7 +14,7 @@ const Signup = () => {
 
   const [errors, setErrors] = useState({});
   const [valid, setValid] = useState(true);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -205,7 +205,7 @@ const Signup = () => {
 
                     <p class="text-center text-muted mt-5 mb-0">
                       Have already an account?
-                      <Link to={"/login"} class="fw-bold text-body">
+                      <Link to={"/"} class="fw-bold text-body">
                         <u>Login here</u>
                       </Link>
                     </p>
