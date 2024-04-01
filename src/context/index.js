@@ -17,6 +17,7 @@ export default function GlobalState({ children }) {
     setLoading(true); // set loading to true before fetching data
     try {
       const res = await fetch(
+       // 'www.themealdb.com/api/json/v1/1/search.php?s=${searchParam}'
         `https://forkify-api.herokuapp.com/api/v2/recipes?search=${searchParam}`
       );
 
@@ -27,7 +28,7 @@ export default function GlobalState({ children }) {
         setRecipeList(data.data.recipes);
         console.log("Updated Recipe List:", data.data.recipes); // Log the updated state
         setSearchParam("");
-        navigate('/')
+        navigate('/home')
       }
       console.log("data");
     } catch (e) {

@@ -1,0 +1,23 @@
+{
+  "users": [
+    {
+      "id": "db8e"
+    },
+    {
+      "id": "22e7",
+      "fname": "kenedy",
+      "lname": "ebruyo",
+      "email": "ken@gmail.com",
+      "password": "86543",
+      "cpassword": "86543"
+    },
+    {
+      "id": "724f",
+      "fname": "jsn",
+      "lname": "lohs",
+      "email": "jsn@gmail.com",
+      "password": "12346",
+      "cpassword": "12346"
+    }
+  ]
+}
