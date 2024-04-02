@@ -40,15 +40,17 @@ export default function GlobalState({ children }) {
 
   function handleAddToFavourite(getCurrentItem){
     console.log(getCurrentItem);
-    let cpyFavouritesList = [...favouritesList];
+    let cpyFavouritesList = [...favouritesList]; //creates a copy of the favourites list
     const index = cpyFavouritesList.findIndex(item=> item.id === getCurrentItem.id)
 
     if(index === -1) {
+      // If the item is not in the favourites list, add it
       cpyFavouritesList.push(getCurrentItem)
     } else {
-      cpyFavouritesList.splice(index) //copying the favourites list
+    // If the item is already in the favourites list, remove it
+      cpyFavouritesList.splice(index, 1) 
     }
-
+      // Update favourites list state
     setFavouritesList(cpyFavouritesList)
   }
 

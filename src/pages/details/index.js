@@ -3,7 +3,9 @@ import { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 export default function Details() {
+  // Extracting 'id' parameter from URL using React Router's useParams hook
   const { id } = useParams();
+  // Destructuring necessary data and functions from context
   const {
     recipeDetailsData,
     setRecipeDetailsData,
@@ -11,33 +13,38 @@ export default function Details() {
     handleAddToFavourite,
   } = useContext(GlobalContext);
 
+  // Fetch recipe details from API when component mounts
   useEffect(() => {
     async function getRecipeDetails() {
-      const response = await fetch(
-       // 'www.themealdb.com/api/json/v1/1/lookup.php?i=${id}'
-        `https://forkify-api.herokuapp.com/api/v2/recipes/${id}`
-      );
-      const data = await response.json();
+      try {
+        const response = await fetch(
+          // 'www.themealdb.com/api/json/v1/1/lookup.php?i=${id}'
+          `https://forkify-api.herokuapp.com/api/v2/recipes/${id}`
+        );
+        const data = await response.json();
 
-      console.log("Recipe Details Data:", data);
-      //console.log(data);
-      if (data?.data) {
-        setRecipeDetailsData(data?.data);
+        console.log("Recipe Details Data:", data);
+        //console.log(data);
+        if (data?.data) {
+          // Update state with fetched recipe details data
+          setRecipeDetailsData(data?.data);
+        }
+      } catch (error) {
+        // Handle any errors that occur during fetch
+        console.error("Error fetching recipe details:", error);
       }
-      
-      
     }
     getRecipeDetails();
-  }, []);
+  }, []);  // Dependency array is empty, so this effect runs only once on component mount
 
-  console.log(recipeDetailsData, "recipeDetailsData");
+  console.log(recipeDetailsData, "recipeDetailsData"); // Log recipeDetailsData to check if it's fetched correctly
 
   return (
     <div className="container mx-auto py-10 grid grid-cols-1 lg:grid-cols-2 gap-10">
       <div className="row-start-2 lg:row-start-auto">
         <div className="h-96 overflow-hidden rounded-xl group">
           <img
-            src={recipeDetailsData?.recipe?.image_url} 
+            src={recipeDetailsData?.recipe?.image_url}
             className="w-full h-full object-cover block group-hover:scale-105 duration-300"
           />
         </div>
@@ -54,6 +61,7 @@ export default function Details() {
             onClick={() => handleAddToFavourite(recipeDetailsData?.recipe)}
             className="p-3 px-8 rounded-lg text-sm uppercase font-medium tracking-wider mt-3 inline-block shadow-md bg-black text-white"
           >
+            {/* Conditionally render button text based on whether recipe is in favorites */}
             {favouritesList &&
             favouritesList.length > 0 &&
             favouritesList.findIndex(
@@ -68,6 +76,7 @@ export default function Details() {
             Ingredients:
           </span>
           <ul className="flex flex-col gap-3">
+            {/* Map through ingredients and render each */}
             {recipeDetailsData?.recipe?.ingredients.map((ingredient, index) => (
               <li key={index}>
                 <span className="text-xl font-semibold text-black">
