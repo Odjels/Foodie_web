@@ -39,6 +39,7 @@ export default function Footer() {
       <p className="footer-copyright">
         Copyright 2024 @ my_food.com - All Right Reserved.
       </p>
+      <div className="credit"> created by <span> Odegua Osajele(web designer)</span> </div>
     </div>
   );
 }

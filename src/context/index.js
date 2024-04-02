@@ -10,31 +10,31 @@ export default function GlobalState({ children }) {
   const [recipeDetailsData, setRecipeDetailsData] = useState(null);
   const [favouritesList, setFavouritesList] = useState([])
 
-  const navigate = useNavigate()
+  const navigate = useNavigate() // Using useNavigate hook from React Router
 
   async function handleSubmit(event) {
-    event.preventDefault();
+    event.preventDefault(); // Preventing the default form submission behavior
     setLoading(true); // set loading to true before fetching data
     try {
-      const res = await fetch(
+      const res = await fetch( // Fetching recipe data from an API endpoint
        // 'www.themealdb.com/api/json/v1/1/search.php?s=${searchParam}'
         `https://forkify-api.herokuapp.com/api/v2/recipes?search=${searchParam}`
       );
 
-      const data = await res.json();
-      if (data?.data?.recipes) {
+      const data = await res.json(); // Parsing the response data as JSON
+      if (data?.data?.recipes) { // Checking if recipes data exists in the response
         // assuming its recipes instead of recipe for  multiple results
-        console.log(" Before State update:", data.data.recipes);
-        setRecipeList(data.data.recipes);
+        console.log(" Before State update:", data.data.recipes); // Updating recipe list state with fetched data
+        setRecipeList(data.data.recipes);  // Updating recipe list state with fetched data
         console.log("Updated Recipe List:", data.data.recipes); // Log the updated state
-        setSearchParam("");
-        navigate('/home')
+        setSearchParam("");  // Resetting search parameter
+        navigate('/home')  // Navigating to '/home' route
       }
       console.log("data");
     } catch (e) {
-      console.log(e);
+      console.log(e);  // Logging any errors that occur during the fetch operation
     } finally {
-      setLoading(false);
+      setLoading(false);  // Setting loading state to false after fetching data
     }
   }
 
